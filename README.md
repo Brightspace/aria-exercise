@@ -4,6 +4,8 @@
 
 It's an accessibility exercise for playing around with [ARIA](https://www.w3.org/TR/wai-aria/).
 
+![screenshot of the application](/screenshots/overview.png?raw=true)
+
 This is a small sample application intended to look like a news site, the BBC -- Brightspace Broadcasting Corporation. The links don't go anywhere, the search doesn't work and the buttons don't really do anything.
 
 Things generally "work" for a user with a mouse, but a keyboard-only user or someone using assistive technology such as a screen reader will have a very difficult time interacting with the application. Until we make some improvements!
@@ -49,6 +51,8 @@ There are several buttons that are just icons:
 * Close (closes the dialog)
 * Bookmark (adds/removes articles from the "read later" list)
 
+![screenshot of icon buttons](/screenshots/icon-button-labels.png?raw=true)
+
 While visually these icons are somewhat clear, they need textual labels. The [aria-label](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Techniques/Using_the_aria-label_attribute) attribute could come in handy here.
 
 Adding a tooltip using the `title` attribute could also be helpful for visual users!
@@ -57,11 +61,15 @@ Adding a tooltip using the `title` attribute could also be helpful for visual us
 
 After the first six sections in the navigation area, four more sections are grouped behind a "More" menu. This menu is not keyboard accessible or screen-reader accessible.
 
+![screenshot of more menu](/screenshots/more-menu.png?raw=true)
+
 Use the [ARIA menu button links](https://www.w3.org/TR/wai-aria-practices/examples/menu-button/menu-button-links.html) pattern and add keyboard event listeners to improve the experience.
 
 ### Search (quick)
 
 The search box is initially hidden and only displays itself when the search icon is clicked. Then when a search is performed, the search box hides itself again.
+
+![screenshot of search](/screenshots/search.png?raw=true)
 
 Unfortunately, focus management during this workflow is very poor, as it gets lost with each interaction.
 
@@ -81,5 +89,7 @@ While visual users will see the toasts, they are not announced to screen readers
 ### "Settings" Dialog (rather less quick)
 
 Clicking the "settings" icon opens a modal dialog with a few checkboxes in it. The user can then "Apply" or "Cancel" their changes. The dialog is not keyboard or screen-reader accessible however.
+
+![screenshot of settings dialog](/screenshots/dialog.png?raw=true)
 
 Follow the instructions from the [ARIA best practices for modal dialogs](https://www.w3.org/TR/wai-aria-practices/examples/dialog-modal/dialog.html) and the [ARIA dialog role](https://www.w3.org/TR/wai-aria-practices/#dialog_modal).
