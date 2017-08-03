@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+		<title>ARIA Exercise: BBC News</title>
+		<link rel="stylesheet" href="style.css">
+	</head>
+	<body>
+		<!--
+		 	HTML5 header element
+			TODO: apply the appropriate ARIA role
+			https://developer.mozilla.org/en-US/docs/Web/HTML/Element/header
+			https://www.w3.org/TR/wai-aria/roles#banner
+		-->
+		<header>
+			<div class="header-row-1">
+				<a class="header-logo" href="/"><img src="images/brightspace.png" alt="Brightspace News Home"></a>
+				<h1 class="header-title">BBC News</h1>
+				<div class="header-spacer"></div>
+				<!--
+				 	TODO: apply the appropriate role to the search
+					https://www.w3.org/TR/wai-aria/roles#search
+				-->
+				<div id="search-container">
+					<input id="search-input" type="search" class="input" placeholder="Search for news...">
+					<button id="search-submit-button" class="button">Search</button>
+					<!--
+						TODO: button doesn't have a textual label
+						https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Techniques/Using_the_aria-label_attribute
+					-->
+					<button id="search-open-button" class="icon-button">
+						<svg width="30" height="30" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30">
+						  <path fill="#565a5c" d="M28.828 23.17l-4.285-4.24c-.756-.75-1.765-1.17-2.854-1.17-.354 0-.707.05-1.04.14l-1.39-1.38c1.21-1.7 1.915-3.78 1.915-6.02 0-5.8-4.74-10.5-10.587-10.5S0 4.7 0 10.5 4.74 21 10.587 21c2.128 0 4.114-.63 5.768-1.71l1.452 1.44c-.1.33-.14.68-.14 1.03 0 1.07.412 2.08 1.18 2.83l4.274 4.24c.757.75 1.776 1.17 2.855 1.17 1.08 0 2.087-.42 2.854-1.17 1.56-1.56 1.56-4.1-.002-5.66zM2.018 10.5c0-4.69 3.84-8.5 8.57-8.5s8.57 3.81 8.57 8.5-3.842 8.5-8.57 8.5-8.57-3.81-8.57-8.5zm25.378 16.92c-.786.78-2.067.78-2.853 0l-4.275-4.25c-.383-.37-.585-.87-.585-1.41 0-.54.212-1.04.585-1.41.383-.38.887-.59 1.422-.59.544 0 1.05.21 1.432.59l4.275 4.24c.786.78.786 2.05 0 2.83z"/>
+						  <path fill="#565a5c" d="M11 16.5c0 .28-.22.5-.5.5h-.01C6.9 16.99 4 14.09 4 10.5S6.9 4.01 10.49 4h.01c.28 0 .5.22.5.5s-.22.5-.5.5h-.01C7.46 5.01 5 7.47 5 10.5s2.46 5.49 5.49 5.5h.01c.28 0 .5.22.5.5z"/>
+						</svg>
+					</button>
+				</div>
+				<!--
+					TODO: button doesn't have a textual label
+					https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Techniques/Using_the_aria-label_attribute
+				-->
+				<button id="settings-button" class="icon-button">
+					<svg width="30" height="30" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30">
+					  <path fill="#565a5c" d="M27.46 11h-1.2c-.22 0-.42-.23-.51-.46-.1-.22-.12-.52.04-.67l.85-.85c1-.99 1.04-2.54.07-3.52l-2.2-2.21c-.98-.96-2.53-.92-3.54.08l-.84.84c-.11.12-.38.15-.61.07-.28-.09-.52-.34-.52-.54v-1.2C19 1.09 17.95 0 16.56 0h-3.12C12.05 0 11 1.09 11 2.54v1.2c0 .2-.24.45-.52.54-.23.08-.5.05-.61-.07l-.84-.84c-1.01-1-2.56-1.04-3.54-.08L3.29 5.5c-.97.98-.93 2.53.07 3.52l.85.85c.16.15.14.45.04.67-.09.23-.29.46-.51.46h-1.2C1.12 11 0 12.07 0 13.44v3.12C0 17.93 1.12 19 2.54 19h1.2c.22 0 .41.22.5.43.1.22.13.52-.03.7l-.85.85c-.47.47-.74 1.08-.77 1.72-.04.68.22 1.32.7 1.81l2.2 2.2c.5.49 1.15.73 1.82.71.63-.03 1.24-.31 1.72-.78l.84-.84c.13-.14.38-.19.7-.04.1.04.19.09.26.17.07.06.17.18.17.33v1.18c0 1.44 1.07 2.56 2.44 2.56h3.12c1.37 0 2.44-1.12 2.44-2.56v-1.18c0-.15.1-.27.17-.33.07-.08.16-.13.26-.17.32-.15.57-.1.7.04l.84.84c.48.47 1.09.75 1.72.78.67.02 1.32-.22 1.82-.71l2.2-2.2c.48-.49.74-1.13.7-1.81-.03-.64-.3-1.25-.77-1.72l-.85-.85c-.16-.18-.13-.48-.03-.7.09-.21.28-.43.5-.43h1.2c1.42 0 2.54-1.07 2.54-2.44v-3.12c0-1.37-1.12-2.44-2.54-2.44zm.54 5.56c0 .35-.34.44-.54.44h-1.2c-.99 0-1.89.62-2.33 1.62-.44.99-.3 2.11.36 2.84l.09.1.84.84c.12.11.19.26.2.39 0 .12-.04.21-.13.3l-2.2 2.2c-.09.1-.19.13-.3.13-.14 0-.28-.07-.4-.2l-.84-.84c-.46-.46-1.09-.71-1.77-.71-.38 0-.79.09-1.14.25-.31.12-.63.33-.88.58-.49.47-.76 1.1-.76 1.76v1.18c0 .21-.09.56-.44.56h-3.12c-.35 0-.44-.35-.44-.56v-1.18c0-.66-.27-1.29-.76-1.76-.25-.25-.57-.46-.88-.58-.35-.16-.76-.25-1.14-.25-.68 0-1.31.25-1.77.71l-.84.84c-.12.13-.26.2-.4.2-.11 0-.21-.03-.3-.13l-2.2-2.2c-.09-.09-.13-.18-.13-.3.01-.13.08-.28.2-.39l.84-.84.09-.1c.66-.73.8-1.85.36-2.84-.44-1-1.34-1.62-2.33-1.62h-1.2c-.2 0-.54-.09-.54-.44v-3.12c0-.35.34-.44.54-.44h1.2c1.01 0 1.94-.66 2.36-1.69.42-1.02.24-2.14-.47-2.86l-.86-.85c-.06-.06-.36-.39-.06-.69l2.19-2.2c.26-.25.57-.07.71.08l.84.84c.65.65 1.69.87 2.65.55 1.12-.36 1.9-1.37 1.9-2.44v-1.2c0-.25.12-.54.44-.54h3.12c.32 0 .44.29.44.54v1.2c0 1.07.78 2.08 1.9 2.44.96.32 2 .1 2.65-.55l.84-.84c.14-.15.45-.33.71-.08l2.19 2.2c.3.3 0 .63-.06.69l-.86.85c-.71.72-.89 1.84-.47 2.86.42 1.03 1.35 1.69 2.36 1.69h1.2c.2 0 .54.09.54.44v3.12z"/>
+					  <path fill="#565a5c" d="M15 21c-3.31 0-6-2.69-6-6s2.69-6 6-6 6 2.69 6 6-2.69 6-6 6zm0-10c-2.206 0-4 1.794-4 4s1.794 4 4 4 4-1.794 4-4-1.794-4-4-4z"/>
+					</svg>
+				</button>
+			</div>
+			<div class="header-row-2">
+				<!--
+				 	HTML5 nav element
+					TODO: apply the appropriate ARIA role
+					https://developer.mozilla.org/en/docs/Web/HTML/Element/nav
+					https://www.w3.org/TR/wai-aria/roles#navigation
+				-->
+				<nav>
+					<ul>
+						<li><a href="#">Top Stories</a></li>
+						<li><a href="#">Local</a></li>
+						<li><a href="#">Opinion</a></li>
+						<li><a href="#">World</a></li>
+						<li><a href="#">Canada</a></li>
+						<li><a href="#">Politics</a></li>
+						<li><a id="more-opener">More</a></li>
+					</ul>
+				</ul>
+			</div>
+		</header>
+		<!--
+		 	HTML5 main element
+			TODO: apply the appropriate ARIA role
+			https://developer.mozilla.org/en/docs/Web/HTML/Element/main
+			https://www.w3.org/TR/wai-aria/roles#main
+		-->
+		<main>
+			<section class="featured">
+				<h2>Featured Content</h2>
+				<article>
+					<h3>New York governor wants probe into polluted water at base of Niagara Falls</h3>
+					<img src="images/niagara-falls-black-water.jpg" alt="black inky water from the shore mixes with clean grean water">
+					<p>
+						New York Gov. Andrew Cuomo has directed state regulators to investigate wastewater discharges that turned the water near the base of Niagara Falls black last weekend.
+					</p>
+					<p class="timeline">5 hours ago</p>
+				</article>
+				<article>
+					<h3>'I just had a weak moment': Disgraced Blue Jays fan Ken Pagan on life after the beer toss</h3>
+					<img src="images/ken-pagan.jpeg" alt="Ken Pagan with a baseball diamond in the background">
+					<p>
+						In his first media interview since throwing a beer can during a Blue Jays playoff game at the Rogers Centre last fall, Ken Pagan talks about his moment of infamy, his love of baseball and life after online shaming.
+					</p>
+					<p class="timeline">2 hours ago</p>
+				</article>
+			</section>
+			<section class="other">
+				<h2>Other Content</h2>
+				<article>
+					<h3>For sale: Clown-themed motel next to cemetery in Nevada</h3>
+					<img src="images/the-clown-motel.jpg" alt="Clown Motel front office in all its creepiness">
+					<p>
+						For around $1.1 million, a clown-themed motel in Nevada could be yours.
+					</p>
+					<p>
+						After taking it over 22 years ago, Bob Perchetti — owner of The Clown Motel in the small town of Tonopah — has decided it's time to sell.
+					</p>
+					<p class="timeline">July 28</p>
+				</article>
+				<article>
+					<h3>Tesla's Musk hands over first Model 3 electric cars to early buyers</h3>
+					<img src="images/tesla.jpg" alt="Red Tesla Model 3 at the reveal event">
+					<p>
+						Tesla Chief Executive Officer Elon Musk said on Friday the Model 3 had over half a million advance reservations as he handed over the first 30 to employee buyers, setting the stage for the biggest test yet of the company's strategy to become a profitable, mass market electric car maker.
+					</p>
+					<p class="timeline">July 28</p>
+				</article>
+			</section>
+		</main>
+		<!--
+		 	HTML5 footer element
+			TODO: apply the appropriate ARIA role
+			https://developer.mozilla.org/en/docs/Web/HTML/Element/footer
+			https://www.w3.org/TR/wai-aria/roles#contentinfo
+		-->
+		<footer>
+			<p>©2017 Brightspace Broadcasting Corporation. All rights reserved.</p>
+		</footer>
+		<!--
+			TODO: use ARIA to turn this <div> into a dialog. Changes are also
+			      required in dialog.js.
+			https://www.w3.org/TR/wai-aria-practices/#dialog_modal
+			https://www.w3.org/TR/wai-aria-practices/examples/dialog-modal/dialog.html
+			https://www.w3.org/TR/wai-aria/states_and_properties#aria-labelledby
+		-->
+		<div id="settings-dialog" class="dialog">
+			<h1 id="settings-dialog-title">Settings</h1>
+			<p>
+				These settings don't actually do anything, obviously.
+			</p>
+			<label>
+				<input type="checkbox">Hide Blue Jays news until 2018
+			</label><br>
+			<label>
+				<input type="checkbox">Hide news about clowns... forever
+			</label><br>
+			<label>
+				<input type="checkbox">Another box that doesn't do anything
+			</label><br>
+			<label>
+				<input type="checkbox">One more
+			</label>
+			<div class="dialog-footer">
+				<button class="button button-primary">Apply</button>
+				<button class="button">Cancel</button>
+			</div>
+		</div>
+		<script src="dialog.js"></script>
+		<script src="menu.js"></script>
+		<script src="toasts.js"></script>
+		<script src="scripts.js"></script>
+	</body>
+</html>
