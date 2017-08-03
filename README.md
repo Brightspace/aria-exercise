@@ -12,12 +12,15 @@ Things generally "work" for a user with a mouse, but a keyboard-only user or som
 
 It's all static HTML, CSS and vanilla JavaScript -- no frameworks or building required. You should be able to just open `index.html` in your browser, or point a static web site library like [http-server](https://www.npmjs.com/package/http-server) at it.
 
-The application is also hosted on S3 here:
-TODO
+The initial version of the application is also hosted here:
+https://rawgit.com/Brightspace/aria-exercise/master/
 
 ## Where should my fixes go?
 
 Start by cloning the repo and creating a branch. Commit your fixes there, but don't actually merge them into `master`.
+
+Once your changes are pushed, others can visit your version of the application [using RawGit](https://rawgit.com/), by visiting:
+`https://rawgit.com/Brightspace/aria-exercise/<branch-name>/`
 
 ## How do I use ARIA to fix the application?
 
