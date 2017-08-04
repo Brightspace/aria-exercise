@@ -25,6 +25,15 @@ function initSearch() {
 	var submitButton = document.getElementById('search-submit-button');
 	var input = document.getElementById('search-input');
 
+	function doSearch() {
+		container.classList.remove('search-open');
+		/**
+		 * TODO: focus should move to the 'open search' button
+		 * https://developer.mozilla.org/en/docs/Web/API/HTMLElement/focus
+		 */
+		createToast('search complete');
+	}
+
 	openButton.addEventListener('click', function() {
 		container.classList.add('search-open');
 		/**
@@ -32,13 +41,11 @@ function initSearch() {
 		 * https://developer.mozilla.org/en/docs/Web/API/HTMLElement/focus
 		 */
 	});
-	submitButton.addEventListener('click', function() {
-		container.classList.remove('search-open');
-		/**
-		 * TODO: focus should move to the 'open search' button
-		 * https://developer.mozilla.org/en/docs/Web/API/HTMLElement/focus
-		 */
-		createToast('search complete');
+	submitButton.addEventListener('click', doSearch);
+	input.addEventListener('keydown', function(evt) {
+		if (evt.keyCode === 13) {
+			doSearch();
+		}
 	});
 
 }
