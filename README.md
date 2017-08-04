@@ -93,3 +93,5 @@ Clicking the "settings" icon opens a modal dialog with a few checkboxes in it. T
 ![screenshot of settings dialog](/screenshots/dialog.png?raw=true)
 
 Follow the instructions from the [ARIA best practices for modal dialogs](https://www.w3.org/TR/wai-aria-practices/examples/dialog-modal/dialog.html) and the [ARIA dialog role](https://www.w3.org/TR/wai-aria-practices/#dialog_modal).
+
+Test text added here.
