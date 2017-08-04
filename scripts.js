@@ -27,24 +27,19 @@ function initSearch() {
 
 	function doSearch() {
 		container.classList.remove('search-open');
-		/**
-		 * TODO: focus should move to the 'open search' button
-		 * https://developer.mozilla.org/en/docs/Web/API/HTMLElement/focus
-		 */
+		openButton.focus();
 		createToast('search complete');
 	}
 
 	openButton.addEventListener('click', function() {
 		container.classList.add('search-open');
-		/**
-		 * TODO: focus should move to the search input
-		 * https://developer.mozilla.org/en/docs/Web/API/HTMLElement/focus
-		 */
+		input.focus();
 	});
 	submitButton.addEventListener('click', doSearch);
 	input.addEventListener('keydown', function(evt) {
 		if (evt.keyCode === 13) {
 			doSearch();
+			evt.preventDefault();
 		}
 	});
 
