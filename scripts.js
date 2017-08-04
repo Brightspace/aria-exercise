@@ -96,6 +96,7 @@ function initArticle(article) {
 	  * TODO: Button doesn't have a textual label. It should match the tooltip.
 	  * https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Techniques/Using_the_aria-label_attribute
 	  */
+	readLater.setAttribute('aria-label', textNotBookmarked);
 	readLater.setAttribute('title', textNotBookmarked);
 	readLater.innerHTML = iconHollow;
 	readLater.addEventListener('click', function() {
