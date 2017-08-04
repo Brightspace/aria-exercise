@@ -8,12 +8,8 @@ function createToast(message) {
 
 	var elem = document.createElement('div');
 	elem.className = 'toast';
+	elem.setAttribute('role', 'alert');
 	elem.innerText = message;
-	/**
-	 * TODO: ensure that the toast is announced to assistive technology
-	 * https://www.w3.org/TR/wai-aria-practices/#alert
-	 * https://www.w3.org/TR/wai-aria-practices/examples/alert/index.html
-	 */
 
 	document.body.appendChild(elem);
 
