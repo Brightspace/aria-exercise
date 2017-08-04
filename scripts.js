@@ -92,16 +92,13 @@ function initArticle(article) {
 	// creates the "read later" (bookmark icon) button
 	var readLater = document.createElement('button');
 	readLater.className = 'icon-button icon-button-sm read-later';
-	/**
-	  * TODO: Button doesn't have a textual label. It should match the tooltip.
-	  * https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Techniques/Using_the_aria-label_attribute
-	  */
 	readLater.setAttribute('aria-label', textNotBookmarked);
 	readLater.setAttribute('title', textNotBookmarked);
 	readLater.innerHTML = iconHollow;
 	readLater.addEventListener('click', function() {
 		isBookmarked = !isBookmarked;
 		readLater.innerHTML = isBookmarked ? iconFilled : iconHollow;
+		readLater.setAttribute('aria-label', isBookmarked ? textBookmarked : textNotBookmarked );
 		readLater.setAttribute('title', isBookmarked ? textBookmarked : textNotBookmarked );
 		createToast( isBookmarked ? toastBookmarked : toastNotBookmarked );
 	});
