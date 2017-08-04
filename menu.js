@@ -9,15 +9,10 @@ function initMenu(opener, items) {
 
 function initOpener(opener, menu) {
 
-	/**
-	 * TODO: Use ARIA to turn the opener into a "navigation menu button"
-	 * https://www.w3.org/TR/wai-aria-practices/#menubutton
-	 * https://www.w3.org/TR/wai-aria-practices/examples/menu-button/menu-button-links.html
-	 * https://www.w3.org/TR/wai-aria/states_and_properties#aria-expanded
-	 * https://www.w3.org/TR/wai-aria/states_and_properties#aria-controls
-	 * https://www.w3.org/TR/wai-aria/roles#button
-	 */
+	opener.setAttribute('role', 'button');
 	opener.setAttribute('href', '#');
+	opener.setAttribute('aria-haspopup', 'true');
+	opener.setAttribute('aria-controls', 'more-menu');
 
 	var chevron = document.createElement('span');
 	chevron.style.marginLeft = '3px';
@@ -25,7 +20,7 @@ function initOpener(opener, menu) {
 	opener.appendChild(chevron);
 
 	opener.addEventListener('click', function() {
-		var isOpen = opener.classList.contains('menu-open');
+		var isOpen = opener.hasAttribute('aria-expanded');
 		if (isOpen) {
 			closeMenu(opener, menu, false);
 		} else {
@@ -36,7 +31,7 @@ function initOpener(opener, menu) {
 	// close the menu if the user clicks anywhere
 	document.addEventListener('click', function(evt) {
 
-		var isOpen = opener.classList.contains('menu-open');
+		var isOpen = opener.hasAttribute('aria-expanded');
 		if (!isOpen || evt.target === opener) return;
 
 		closeMenu(opener, menu, false);
@@ -47,41 +42,47 @@ function initOpener(opener, menu) {
 
 function createMenu(opener, items) {
 
-	/**
-	 * TODO: Use ARIA to transform this list and its items into a menu.
-	 * https://www.w3.org/TR/wai-aria-practices/#menubutton
-	 * https://www.w3.org/TR/wai-aria-practices/examples/menu-button/menu-button-links.html
-	 * https://www.w3.org/TR/wai-aria/roles#menu
-	 * https://www.w3.org/TR/wai-aria/roles#menuitem
-	 * https://www.w3.org/TR/wai-aria/states_and_properties#aria-labelledby
-	 */
 	var menu = document.createElement('ul');
 	menu.className = 'menu';
 	menu.setAttribute('id', 'more-menu');
+	menu.setAttribute('role', 'menu');
+	menu.setAttribute('aria-labelledby', 'more-opener');
 
 	for (var i=0; i<items.length; i++) {
 		var item = createItem(items[i]);
 		menu.appendChild(item);
 	}
 
+	var index = 0;
 	menu.addEventListener('keydown', function(evt) {
-		/**
-		 * TODO: handle keyboard interactions from the user to adjust
-		 * the selected menu item by focuses on it and expand/collapse the menu.
-		 * https://www.w3.org/TR/wai-aria-practices/examples/menu-button/menu-button-links.html
-		 */
+
 		switch (evt.keyCode) {
 			// escape
 			case 27:
 			// enter
 			case 13:
+			// tab
+			case 9:
+				closeMenu(opener, menu, true);
+				return;
 			// up
 			case 38:
+				index--;
+				if (index === -1) {
+					index = items.length - 1;
+				}
+				break;
 			// down
 			case 40:
+				index++;
+				if (index === items.length) {
+					index = 0;
+				}
+				break;
 		}
 
 		evt.preventDefault();
+		menu.children[index].firstChild.focus();
 
 	});
 
@@ -91,38 +92,29 @@ function createMenu(opener, items) {
 
 function createItem(itemData) {
 
-	/**
-	 * TODO: Use ARIA to transform this list and its items into a menu.
-	 * https://www.w3.org/TR/wai-aria-practices/#menubutton
-	 * https://www.w3.org/TR/wai-aria-practices/examples/menu-button/menu-button-links.html
-	 * https://www.w3.org/TR/wai-aria/roles#menu
-	 * https://www.w3.org/TR/wai-aria/roles#menuitem
-	 * https://www.w3.org/TR/wai-aria/states_and_properties#aria-labelledby
-	 */
 	var link = document.createElement('a');
+	link.setAttribute('role', 'menuitem');
 	link.setAttribute('href', '#');
+	link.setAttribute('tabindex', '-1');
 	link.innerText = itemData.text;
 
 	var item = document.createElement('li');
+	item.setAttribute('role', 'none');
 	item.appendChild(link);
 
 	return item;
 }
 
 function openMenu(opener, menu) {
-	opener.classList.add('menu-open');
+	opener.setAttribute('aria-expanded', 'true');
 	menu.style.display = 'block';
-	/**
-	 * TODO: focus should move inside the menu to the first item
-	 */
+	menu.children[0].firstChild.focus();
 }
 
 function closeMenu(opener, menu, doFocus) {
-	opener.classList.remove('menu-open');
+	opener.removeAttribute('aria-expanded');
 	menu.style.display = 'none';
 	if (doFocus) {
-		/**
-		 * TODO: focus should return to the opener
-		 */
+		opener.focus();
 	}
 }
