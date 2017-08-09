@@ -83,12 +83,14 @@ function initArticle(article) {
 	var toastBookmarked = 'article added to read later list';
 	var toastNotBookmarked = 'article removed from read later list';
 	var isBookmarked = false;
+	var heading = article.querySelector('h3');
 
 	// creates the "read later" (bookmark icon) button
 	var readLater = document.createElement('button');
 	readLater.className = 'icon-button icon-button-sm read-later';
 	readLater.setAttribute('aria-label', textNotBookmarked);
 	readLater.setAttribute('title', textNotBookmarked);
+	readLater.setAttribute('aria-describedby', heading.id);
 	readLater.innerHTML = iconHollow;
 	readLater.addEventListener('click', function() {
 		isBookmarked = !isBookmarked;
@@ -98,7 +100,6 @@ function initArticle(article) {
 		createToast( isBookmarked ? toastBookmarked : toastNotBookmarked );
 	});
 
-	var heading = article.querySelector('h3');
 	heading.parentNode.insertBefore(readLater, heading.nextSibling);
 
 }
