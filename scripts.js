@@ -97,6 +97,7 @@ function initArticle(article) {
 	  * https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Techniques/Using_the_aria-label_attribute
 	  */
 	readLater.setAttribute('title', textNotBookmarked);
+	readLater.setAttribute('aria-label', textNotBookmarked);
 	readLater.innerHTML = iconHollow;
 	readLater.addEventListener('click', function() {
 		isBookmarked = !isBookmarked;
