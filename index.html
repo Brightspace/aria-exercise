@@ -7,12 +7,6 @@
 		<link rel="stylesheet" href="style.css">
 	</head>
 	<body>
-		<!--
-		 	HTML5 header element
-			TODO: apply the appropriate ARIA role
-			https://developer.mozilla.org/en-US/docs/Web/HTML/Element/header
-			https://www.w3.org/TR/wai-aria/roles#banner
-		-->
 		<header>
 			<div class="header-row-1" role="banner">
 				<a class="header-logo" href="/"><img src="images/brightspace.png" alt="Brightspace News Home"></a>
@@ -74,8 +68,8 @@
 			https://www.w3.org/TR/wai-aria/roles#main
 		-->
 		<main>
-			<section class="featured" role=main>
-				<h2>Featured Content</h2>
+			<section class="featured" role=main aria-labelledby="featuredContent">
+				<h2 id="featuredContent">Featured Content</h2>
 				<article>
 					<h3>New York governor wants probe into polluted water at base of Niagara Falls</h3>
 					<img src="images/niagara-falls-black-water.jpg" alt="black inky water from the shore mixes with clean grean water">
@@ -93,8 +87,8 @@
 					<p class="timeline">2 hours ago</p>
 				</article>
 			</section>
-			<section class="other" role=complementary>
-				<h2>Other Content</h2>
+			<section class="other" role=complementary aria-labelledby="otherContent">
+				<h2 id="otherContent">Other Content</h2>
 				<article>
 					<h3>For sale: Clown-themed motel next to cemetery in Nevada</h3>
 					<img src="images/the-clown-motel.jpg" alt="Clown Motel front office in all its creepiness">
