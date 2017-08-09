@@ -91,6 +91,8 @@ function openDialog(dialog, opener) {
 	overlay.appendChild(dialog);
 	document.body.classList.add('overlay-enabled');
 
+	document.getElementById('inert-wrapper').setAttribute('inert','inert');
+
 	/**
 	 * TODO: move focus inside the dialog (the close button would be good)
 	 * https://developer.mozilla.org/en/docs/Web/API/HTMLElement/focus
@@ -105,6 +107,9 @@ function openDialog(dialog, opener) {
 function closeDialog(dialog, opener) {
 
 	var overlay = document.querySelector('.overlay');
+
+	document.getElementById('inert-wrapper').removeAttribute('inert');
+
 	if (!overlay) return;
 
 	// show the rest of the page
